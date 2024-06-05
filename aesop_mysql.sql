@@ -28,3 +28,16 @@ insert into member values('admin2@aesop.com', '1234', 'admin',sysdate());
 INSERT INTO member (email, pw, name, regdate) VALUES ('admin@aesop.com', '1234','admin', sysdate());
 
 ALTER TABLE member MODIFY regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+
+drop table notice;
+
+CREATE TABLE notice(
+    no INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+    title VARCHAR(200) NOT NULL, 
+    content VARCHAR(1000) NOT NULL, 
+    image_url VARCHAR(255),  
+    name VARCHAR(100) DEFAULT 'admin' NOT NULL, 
+    hit INT DEFAULT 0, 
+    regDate TIMESTAMP NOT NULL
+);
