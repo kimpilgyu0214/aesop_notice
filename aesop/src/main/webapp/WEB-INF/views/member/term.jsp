@@ -948,9 +948,6 @@
     	</section>
 	</main>
 </div>
-	<!-- footer 부분 include -->
-	<footer class="footer" id="ft">
-		<jsp:include page="../include/ft.jsp"></jsp:include>
-	</footer>
+	
 </body>
 </html>

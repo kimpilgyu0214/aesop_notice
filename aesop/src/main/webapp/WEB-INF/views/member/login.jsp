@@ -9,23 +9,19 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>목록</title>
+	<title>LOGIN</title>
 	<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
 	<!-- 헤더 부분 include -->
 	<header id="hd-wrap" class="container is-fullhd">
 		<jsp:include page="../include/hd.jsp"></jsp:include>
-	</header>
+	</header><hr><hr><hr><hr>
 	<div class="container">
-	<main class="contents">
+	<main class="contents" style="margin-top: 100px;">
 		<div id="breadcrumb" class="container breadcrumb-wrap clr-fix" style="height:60px; line-height:60px;">
 	    	<nav class="breadcrumb" aria-label="breadcrumbs">
-			  <ul>
-			    <li><a href="${path2 }">Home</a></li>
-			    <li><a href="${path2 }">Member</a></li>
-			    <li class="is-active"><a href="#" aria-current="page">Log In</a></li>
-			  </ul>
+			 
 			</nav>
     	</div>
  	    <section class="page" id="page1">
@@ -39,7 +35,7 @@
 		                        <tbody>
 		                        <tr>
 		                            <th><label for="email">이메일</label></th>
-		                            <td><input type="text" name="email" id="email" size="100" class="input" placeholder="아이디 입력" required>
+		                            <td><input type="text" name="email" id="email" size="50" class="input" placeholder="이메일 입력" required>
 		                                <!--  pattern="^[a-z0-9]+$"  -->
 		                            </td>
 		                        </tr>
@@ -52,8 +48,10 @@
 		                        <tr>
 		                            <td colspan="2">
 		                            	<div class="buttons">
-			                                <input type="submit" class="button is-danger" value="로그인">
-			                                <input type="reset" class="button is-info" value="취소">
+			                                <input type="submit" class="button" value="로그인">
+			                                <input type="reset" class="button" value="취소">
+			                                <input type="button" class="button" value="회원가입" onclick="redirectToJoin()">
+			                                
 			                            </div>    
 		                            </td>
 		                        </tr>
@@ -66,14 +64,16 @@
 		                    alert("로그인 실패");
 		                }
 		            </script>
+		            <script>
+					    function redirectToJoin() {
+					        window.location.href = "${path2}/member/join.do";
+					    }
+</script>
 		        </div>
 			</div>
     	</section>
 	</main>
 </div>
-<!-- footer 부분 include -->
-	<footer class="footer" id="ft">
-		<jsp:include page="../include/ft.jsp"></jsp:include>
-	</footer>
+
 </body>
 </html>

@@ -9,23 +9,20 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>목록</title>
+	<title>JOIN</title>
 	<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
 	<!-- 헤더 부분 include -->
 	<header id="hd" class="container is-fullhd">
 			<jsp:include page="../include/hd.jsp"></jsp:include>
-	</header>
+	</header><hr><hr><hr><hr>
 	<div class="container">
-	<main class="contents">
+	<main class="contents" style="margin-top: 100px;">
 		<div id="breadcrumb" class="container breadcrumb-wrap clr-fix" style="height:60px; line-height:60px;">
 	    	<nav class="breadcrumb" aria-label="breadcrumbs">
-			  <ul>
-			    <li><a href="${path2 }">Home</a></li>
-			    <li><a href="${path2 }">Member</a></li>
-			    <li class="is-active"><a href="#" aria-current="page">Join Form</a></li>
-			  </ul>
+			  
+			  
 			</nav>
     	</div>
  	    <section class="page" id="page1">
@@ -39,21 +36,21 @@
 	                        <tr>
 	                        <th style="background-color:#dcdcdc">이메일</th>
 	                        <td>
-	                            <input type="email" name="email" id="email" placeholder="이메일 입력" maxlength="80" class="input" required>
+	                            <input type="email" name="email" id="email" placeholder="이메일 입력" maxlength="30" class="input" required>
 	                        </td>
 	                    </tr>
 	                    </tr>
 	                    <tr>
 	                        <th style="background-color:#dcdcdc">비밀번호</th>
 	                        <td>
-	                            <input type="password" name="pw" id="pw" placeholder="비밀번호 입력" maxlength="12" class="input" required>
+	                            <input type="password" name="pw" id="pw" placeholder="비밀번호 입력" maxlength="25" class="input" required>
 	                            <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th style="background-color:#dcdcdc">비밀번호 확인</th>
 	                        <td>
-	                            <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인 입력" maxlength="12" class="input" required>
+	                            <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인 입력" maxlength="25" class="input" required>
 	                            <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
 	                        </td>
 	                    </tr>
@@ -109,9 +106,6 @@
 	    </section>
 	</main>
 </div>
-<!-- footer 부분 include -->
-	<footer class="footer" id="ft">
-		<jsp:include page="../include/ft.jsp"></jsp:include>
-	</footer>
+
 </body>
 </html>
