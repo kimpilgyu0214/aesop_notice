@@ -15,5 +15,5 @@ public class Notice {
 	private String image_url;
 	private String name;
 	private int hit;
-	private String resdate;
+	private String regdate;
 }

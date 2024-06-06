@@ -13,13 +13,14 @@
 	<select id="memberCount" resultType="int">
 		select count(*) from member
 	</select>
-    <insert id="insMember">
-        insert into member (email, pw, name, tel, addr1, addr2, postcode, birth, point)
+	
+      <insert id="insMember">
+        INSERT INTO member (email, pw, name, tel, addr1, addr2, postcode, birth, point, regdate)
         VALUES 
         (#{email}, #{pw}, #{name}, 
         #{tel, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
         #{addr2, jdbcType=VARCHAR}, #{postcode, jdbcType=VARCHAR}, 
-        #{birth, jdbcType=VARCHAR}, #{point, jdbcType=INTEGER})
+        #{birth, jdbcType=VARCHAR}, #{point, jdbcType=INTEGER}, CURRENT_TIMESTAMP)
     </insert>
 
 	<update id="changePw">

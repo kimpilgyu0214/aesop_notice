@@ -60,6 +60,12 @@
 	                            <input type="text" name="name" id="name" placeholder="이름 입력" class="input" maxlength="40" required>
 	                        </td>
 	                    </tr>
+	                    <tr>					
+					    <td>
+					        <input type="checkbox" name="ageCheck" id="ageCheck" required>
+					        <label for="ageCheck">본인은 만14세 이상입니다</label>
+					    </td>
+						</tr>
 	                                      
 	                    <tr>
 	                        <td colspan="2">
@@ -73,35 +79,23 @@
 	                </table>
 	            </form>
 	            
-			     <script>
-		        function joinCheck(form) {
-		            if (form.pw.value !== form.pw2.value) {
-		                alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
-		                form.pw.focus();
-		                return false;
-		            }
-		            return true;
+
+				<script>
+				    function joinCheck(form) {
+				        if (form.pw.value !== form.pw2.value) {
+				            alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+				            form.pw.focus();
+				            return false;
+				        }
+				
+				        if (!form.ageCheck.checked) {
+				            alert("본인은 만14세 이상입니다를 체크해주세요.");
+				            return false;
+				        }
+				
+				        return true;
 				    }
-				  </script>
-	            <script>
-	                function findAddr() {
-	                    new daum.Postcode({
-	                        oncomplete: function(data) {
-	                            console.log(data);
-	                            var roadAddr = data.roadAddress;
-	                            var jibunAddr = data.jibunAddress;
-	                            document.getElementById("postcode").value = data.zonecode;
-	                            if(roadAddr !== '') {
-	                                document.getElementById("addr1").value = roadAddr;
-	                            } else if(jibunAddr !== ''){
-	                                document.getElementById("addr1").value = jibunAddr;
-	                            }
-	                            document.getElementById("addr2").focus();
-	                        }
-	                    }).open();
-	                }
-	            </script>
-	            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+				</script>
 	        </div>
 	    </section>
 	</main>

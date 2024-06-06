@@ -31,7 +31,7 @@ public class NoticeDAO implements NoticeMapper {
 
 	@Override
 	public void insNotice(Notice notice) {
-		sqlSession.insert("notice.upNotice",notice);
+		sqlSession.insert("notice.insNotice",notice);
 		
 	}
 
