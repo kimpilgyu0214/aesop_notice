@@ -20,15 +20,22 @@
 	</select>
 	
 	<!-- 공지사항 등록 -->
-	<insert id="insNotice" parameterType="com.aesop.domain.Notice">
-		insert into notice values (default, #{title}, #{content}, #{image_url}, 
-		default, default,default)
-	</insert>
+ 	<insert id="insNotice" parameterType="com.aesop.domain.Notice">
+        INSERT INTO notice (no, title, content, img1, img2, img3, img4, img5, name, hit, regDate) 
+        VALUES (default, #{title}, #{content}, #{img1}, #{img2}, #{img3}, #{img4}, #{img5}, default, default, default)
+    </insert>
 	
-	<!-- 공지사항 변경 -->
-	<update id="upNotice" parameterType="com.aesop.domain.Notice">
-		update notice set title=#{title}, content=#{content}, image_url=#{image_url} where no=#{no}
-	</update>
+	 <update id="upNotice" parameterType="com.aesop.domain.Notice">
+        UPDATE notice 
+        SET title = #{title}, 
+            content = #{content}, 
+            img1 = #{img1}, 
+            img2 = #{img2}, 
+            img3 = #{img3}, 
+            img4 = #{img4}, 
+            img5 = #{img5}
+        WHERE no = #{no}
+    </update>
 	
 	<!-- 공지사항 조회수 증가 -->
 	<update id="hitCount" parameterType="int">

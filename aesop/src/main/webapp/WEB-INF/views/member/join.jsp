@@ -16,8 +16,8 @@
 	<!-- 헤더 부분 include -->
 	<header id="hd" class="container is-fullhd">
 			<jsp:include page="../include/hd.jsp"></jsp:include>
-	</header><hr><hr><hr><hr>
-	<div class="container">
+	</header><br><br><br><br>
+		<div class="container">
 	<main class="contents" style="margin-top: 100px;">
 		<div id="breadcrumb" class="container breadcrumb-wrap clr-fix" style="height:60px; line-height:60px;">
 	    	<nav class="breadcrumb" aria-label="breadcrumbs">

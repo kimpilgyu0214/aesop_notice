@@ -23,9 +23,9 @@
             <a href=""><li class="menu">헤어</li></a>
             <a href=""><li class="menu">향수</li></a>
             <a href=""><li class="menu">키트&트레블</li></a>
-            <a href=""><li class="menu">읽기</li></a>
+            <a href="${path2}/member/logout.do"><li class="menu">읽기</li></a>
             <a href=""><li class="menu">스토어</li></a>
-            <a href="${path2}/notice/list.do""><li class="menu">게시판</li></a>
+            <a href="${path2}/notice/listAll.do""><li class="menu">게시판</li></a>
             <a href=""><li class="menu">검색</li></a>
         </ul>
     </nav>
