@@ -3,6 +3,8 @@ package com.aesop.per;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +12,9 @@ import com.aesop.domain.Member;
 
 @Repository
 public class MemberDAO implements MemberMapper{
+	
+	private static final Logger log = LoggerFactory.getLogger(MemberDAO.class);
+	
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -18,10 +23,17 @@ public class MemberDAO implements MemberMapper{
 		return sqlSession.selectList("member.getMemberList");
 	}
 
-	@Override
-	public Member getMember(String email) {
-		return sqlSession.selectOne("member.getMember", email);
-	}
+    @Override
+    public Member getMember(String email) throws IllegalArgumentException {
+        log.info("Fetching member with email: {}", email);
+        Member member = sqlSession.selectOne("member.getMember", email);
+        if (member != null) {
+            log.info("Fetched member: {}", member);
+        } else {
+            log.warn("No member found with email: {}", email);
+        }
+        return member;
+    }
 
 	@Override
 	public int memberCount() {

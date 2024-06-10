@@ -15,21 +15,23 @@
 	</select>
 	
       <insert id="insMember">
-        INSERT INTO member (email, pw, name, tel, addr1, addr2, postcode, birth, point, regdate)
+        INSERT INTO member (email, pw, name, tel, addr1, addr2, postcode, skintype, birth, point, regdate)
         VALUES 
         (#{email}, #{pw}, #{name}, 
         #{tel, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
-        #{addr2, jdbcType=VARCHAR}, #{postcode, jdbcType=VARCHAR}, 
+        #{addr2, jdbcType=VARCHAR}, #{postcode, jdbcType=VARCHAR}, #{skintype, jdbcType=VARCHAR},
         #{birth, jdbcType=VARCHAR}, #{point, jdbcType=INTEGER}, CURRENT_TIMESTAMP)
     </insert>
 
 	<update id="changePw">
 		update member set pw=#{pw} where email=#{email}
 	</update>
+	
 	<update id="changeInfo">
 		update member set name=#{name}, tel=#{tel}, 
-		addr1=#{addr1}, addr2=#{addr2}, postcode=#{postcode} where email=#{email}
+		addr1=#{addr1}, addr2=#{addr2}, postcode=#{postcode} skintype=#{skintype} where email=#{email}
 	</update>
+	
 	<update id="changePoint">
 		update member set point=point+#{point} where email=#{email}
 	</update>

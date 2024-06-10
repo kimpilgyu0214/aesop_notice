@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aesop.biz.MemberBiz;
@@ -36,11 +38,6 @@ public class MemberController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("term.do")
-	public String agree(Model model, RedirectAttributes rttr) {
-		rttr.addAttribute("msg", "회원 약관에 동의하시기 바랍니다.");
-		return "member/term";
-	}
 	
 	@GetMapping("join.do")
 	public String join(Model model, @ModelAttribute("member") Member member) {
@@ -58,6 +55,7 @@ public class MemberController {
 		member.setAddr1(request.getParameter("addr1"));
 		member.setAddr2(request.getParameter("addr2"));
 		member.setPostcode(request.getParameter("postcode"));
+		member.setSkintype(request.getParameter("skintype"));
 		memberService.insMember(member);
 		model.addAttribute("msg", "회원가입을 축하합니다.");
 		return "redirect:/";
@@ -115,11 +113,20 @@ public class MemberController {
 		member.setAddr1(request.getParameter("addr1"));
 		member.setAddr2(request.getParameter("addr2"));
 		member.setPostcode(request.getParameter("postcode"));
+		member.setBirth(request.getParameter("birth"));
+		member.setSkintype(request.getParameter("skintype"));
 		memberService.changeInfo(member);
 		model.addAttribute("msg", "회원가입을 축하합니다.");
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+    @PostMapping("updateMemberAjax.do")
+    @ResponseBody
+    public String updateMemberAjax(@RequestBody Member member) {
+        memberService.changeInfo(member);
+        return "success";
+    }
 	
 	@GetMapping("memberDelete.do")
 	public String memberDelete(@RequestParam("email") String email, Model model) {

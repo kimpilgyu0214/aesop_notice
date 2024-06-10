@@ -16,6 +16,7 @@ public class Member {
 	private String addr2;
 	private String postcode;
 	private String birth;
+	private String skintype;
 	private int point;
 	private String regdate;
 }

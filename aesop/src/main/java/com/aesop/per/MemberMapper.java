@@ -8,7 +8,7 @@ public interface MemberMapper {
 
 	
 	public List<Member> getMemberList();
-	public Member getMember(String email);
+	public Member getMember(String email) throws IllegalArgumentException;
 	public int memberCount();
 	public void insMember(Member member);
 	public void changePw(Member member);
