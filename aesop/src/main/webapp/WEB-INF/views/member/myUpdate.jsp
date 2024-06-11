@@ -49,10 +49,6 @@
 		                            <td><input type="text" name="name" id="name" class="input"  value="${cus.name }" required></td>
 		                        </tr>
 		                        <tr>
-		                            <th><label for="email">이메일</label></th>
-		                            <td><input type="email" name="email" id="email" class="input" value="${cus.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></td>
-		                        </tr>
-		                        <tr>
 		                            <th><label for="tel">전화번호</label></th>
 		                            <td><input type="tel" name="tel" id="tel" class="input"  value="${cus.tel }" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required></td>
 		                        </tr>

@@ -41,6 +41,60 @@
             margin-bottom: 15px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script>
+       function editUserInfo() {
+    	    document.getElementById("editInfo").innerHTML = `
+    	        <input type="text" id="editName" value="${cus.name}" /><br>
+    	        <input type="email" id="editEmail" value="${cus.email}" /><br>
+    	        <button onclick="saveUserInfo()">저장</button>
+    	        <button onclick="cancelEdit()">취소</button>
+    	    `;
+    	}
+
+       function saveUserInfo() {
+    	    const updatedName = document.getElementById("editName").value;
+    	    const updatedEmail = document.getElementById("editEmail").value;
+    	    $.ajax({
+    	        url: '${path2}/member/updateUserInfo.do',
+    	        method: 'POST',
+    	        data: JSON.stringify({
+    	            name: updatedName,
+    	            email: updatedEmail      
+    	        }),
+    	        contentType: 'application/json',
+    	        success: function(response) {
+    	            // 업데이트된 정보를 바로 표시
+    	            document.getElementById("editInfo").innerHTML = `
+    	                ${cus.name}님<br>${cus.email}
+    	            `;
+    	            // 환영 메시지 업데이트
+    	            document.getElementById("welcomeMessage").innerHTML = `환영합니다 ${updatedName}님`;
+    	            alert('정보가 성공적으로 업데이트되었습니다.');
+    	            // 페이지 새로고침
+    	            location.reload();
+    	        },
+    	        error: function(error) {
+    	            alert('정보 업데이트에 실패했습니다.');
+    	            console.error('Error:', error);
+    	        }
+    	    });
+    	}
+    	function cancelEdit() {
+    	    document.getElementById("editInfo").innerHTML = `
+    	        ${cus.name}님<br>${cus.email}
+    	    `;
+    	}
+    	
+    	function editPassword() {
+    	    document.getElementById("editPassword").innerHTML = `
+    	        <input type="password" id="editPasswordInput" placeholder="새로운 패스워드 입력" /><br>
+    	        <button onclick="savePassword()">저장</button>
+    	        <button onclick="cancelEditPassword()">취소</button>
+    	    `;
+    	}
+
+    </script>
 </head>
 <body>
 <div class="full-wrap">
@@ -58,9 +112,9 @@
                 </a>
             </li>
         </ul>
-        <div class="welcome">
-            <h3>환영합니다 ${cus.name}님</h3>
-        </div>
+		<div class="welcome" id="welcomeMessage">
+		    <h3>환영합니다 ${cus.name}님</h3>
+		</div>
          <div id="tab_wrap">
             <nav class="tab">
                 <ul class="tabnav">
@@ -89,10 +143,13 @@
 					        ${cus.name}님<br>${cus.email}
 					    </div>
 					</li>
-                    
-                    <li>
-                        패스워드<br>********
-                    </li>
+					<li>
+					    패스워드
+					    <button id="editPasswordButton" onclick="editPassword()">편집</button><br>
+					    <div id="editPassword">
+					        ********
+					    </div>
+					</li>
                     <li>
                         피부를 설명해주세요 <br>
                         <select name="skintype">
@@ -112,25 +169,5 @@
     </main>
 </div>
 
-<script>
-    function editUserInfo() {
-        var formHtml = '<form id="editForm" action="/editUserInfo" method="post">' +
-            '<label for="name">이름:</label>' +
-            '<input type="text" id="name" name="name" value="${cus.name}">' +
-            '<label for="email">이메일:</label>' +
-            '<input type="email" id="email" name="email" value="${cus.email}">' +
-            '<button type="button" onclick="submitUserInfo()">저장</button>' +
-            '</form>';
-
-        document.getElementById('editButton').style.display = 'none'; // 편집 버튼 숨김
-        document.getElementById('editInfo').innerHTML = formHtml;
-    }
-
-    function submitUserInfo() {
-        var form = document.getElementById('editForm');
-        // 폼을 서버로 제출합니다.
-        form.submit();
-    }
-</script>
 </body>
 </html>

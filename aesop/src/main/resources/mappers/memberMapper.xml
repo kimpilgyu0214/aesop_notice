@@ -27,14 +27,22 @@
 		update member set pw=#{pw} where email=#{email}
 	</update>
 	
-	<update id="changeInfo">
-		update member set name=#{name}, tel=#{tel}, 
-		addr1=#{addr1}, addr2=#{addr2}, postcode=#{postcode} skintype=#{skintype} where email=#{email}
-	</update>
+<update id="changeInfo">
+    update member set 
+        name=#{name}, 
+        tel=#{tel}, 
+        addr1=#{addr1}, 
+        addr2=#{addr2}, 
+        postcode=#{postcode}, 
+        birth=#{birth}, 
+        skintype=#{skintype} 
+    where email=#{email}
+</update>
 	
 	<update id="changePoint">
 		update member set point=point+#{point} where email=#{email}
 	</update>
+	
 	<delete id="delMember">
 		delete from member where email=#{email}
 	</delete>

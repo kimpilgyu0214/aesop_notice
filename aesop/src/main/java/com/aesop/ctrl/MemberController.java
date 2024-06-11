@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,12 +122,20 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-    @PostMapping("updateMemberAjax.do")
-    @ResponseBody
-    public String updateMemberAjax(@RequestBody Member member) {
-        memberService.changeInfo(member);
-        return "success";
-    }
+	@PostMapping("updateUserInfo.do")
+	@ResponseBody
+	public ResponseEntity<String> updateUserInfo(@RequestBody Member member) {
+	    try {
+	        log.info("Received member data: " + member);
+	        memberService.changeInfo(member);
+	        session.setAttribute("cus", member);
+	        return ResponseEntity.ok("정보가 성공적으로 업데이트되었습니다.");
+	    } catch (Exception e) {
+	        log.error("Error updating user info", e);
+	        return ResponseEntity.status(500).body("정보 업데이트에 실패했습니다.");
+	    }
+	}
+	
 	
 	@GetMapping("memberDelete.do")
 	public String memberDelete(@RequestParam("email") String email, Model model) {
